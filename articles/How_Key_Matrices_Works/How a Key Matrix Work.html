@@ -1,0 +1,194 @@
+<html>
+<head>
+  <title>How a Key Matrix Work</title>
+  <basefont face="微软雅黑" size="2" />
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="exporter-version" content="YXBJ Windows/601935 (zh-CN, DDL); Windows/6.1.1 (Win64); EDAMVersion=V2;"/>
+  <style>
+    body, td {
+      font-family: 微软雅黑;
+      font-size: 10pt;
+    }
+  </style>
+</head>
+<body>
+<a name="1124"/>
+<h1>How a Key Matrix Work</h1>
+
+<div><span>
+  <div style="--en-clipped-content:article">
+<div><br/></div><div style="font-size: 16px; display:table-row; min-width: 100%; position: relative;"> <div><div><table><tbody><tr><td align="left" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" valign="top">
+
+
+
+
+
+
+<div align="right"><font color="#00571D" style="font-family:&quot;Times New Roman&quot;;font-size:16px;"><b>27 June 2010</b></font></div><div align="right"><strong>Author:</strong> <font color="#00179C" style="font-family:&quot;Times New Roman&quot;;font-size:16px;"><b>Giorgos Lazaridis</b></font></div><a href="http://pcbheaven.com/wikipages/How_Key_Matrices_Works/" style="letter-spacing:0px;font-family:verdana;font-size:22px;color:black;text-decoration:none;">How a Key Matrix Work</a><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/><br/><div style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;clear:right;float:right;margin:4px 0px 4px 10px;padding:6px 4px;width:200;position:relative;"><div align="center"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277634699.jpg" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image.png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="160"/></a><br/><font style="font-family:&quot;Times New Roman&quot;;font-size:16px;">A typical PC keyboard with 109 keys</font></div></div>
+<div style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;clear:right;float:right;margin:4px 0px 4px 10px;padding:6px 4px;width:200;position:relative;"><div align="center"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277634722.jpg" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image [1].png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="160"/></a><br/><font style="font-family:&quot;Times New Roman&quot;;font-size:16px;">This is all the PCB that hides inside a keyboard. Only 26 connectors are used to interface all 109 keys! Thanks to the matrices.</font></div></div>
+
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">What you probably have in front of you, is a keyboard with more than 100 keys on it... If you are not familiar with the key matrices, then you may think that inside this keyboard, there is a chip (probably a microcontroller) that has at least the same number of inputs to read each key separately. Well, this is far from true...</p>
+
+
+<br/><br/><br/>
+
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">What are the key matrices?</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">The matrices are actually an interface technique. It can be used to interface inputs like the PC keyboard keys, but also to control multiple outputs like LEDs. According to this technique, the I/O are divided into two sections: the columns and the rows. You can imagine a matrix as an excel sheet. Here is a 4 x 4 matrix</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/Image [2].png" type="image/png" data-filename="Image.png" border="0" height="215" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="219"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">The blue lines are the columns and the red lines the rows. There are 16 knots that the rows and columns intersect. The columns and the rows are NOT in contact! Suppose that we want to make a key matrix. To do this, we will have to connect a button to each knot. The buttons will have a push-to-make contact. When the operator pushes this button, it will connect the column and the row that it corresponds to. Now i will put the push-to-make buttons onto the matrix</p> 
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/Image [3].png" type="image/png" data-filename="Image.png" border="0" height="215" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="219"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">The buttons are named with the Column:Row name that they connect. For example, the top-left button is named A1 and the bottom right is named D4. </p>
+
+
+<br/><br/><br/>
+
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">How does a key-matrix works?</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">To understand the operation principle, i will re-draw the above matrix without colors. I will also put connection pins to each row and column wire. Then, i will give power to only one column, the column B. The wire that is red, indicates that it has power, and the button that is purple indicates that the button is pressed. Then, i will simulate a button press to button number B3:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/Image [4].png" type="image/png" data-filename="Image.png" border="0" height="207" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="208"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">Watch the above animation. The column wire B has power all the time. No other wire has power, until the button B3 is pressed. This button makes contact between the column B and the row 3. Because column B has power, the row 3 will also have power as long as the button B3 is pressed! What this means it that, if we know which column has currently power, and we watch the rows, then we can understand which button was pressed, if we detect power on a row! If for example we know that the column B has power, and we detect also power to row 3, then we understand that the button B3 is pressed.</p>
+
+<br/><br/><br/>
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">A matrix in the real life</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">So, how does a matrix finally works? If you have understand the previous example, then it will be very easy for you to follow. The matrix is controlled by a microcontroller. For the above 16-button 4x4 matrix, 8 pins of the micro controller will be used. The first 4 pins will be OUTPUTS and will be connected to the COLUMN wires, while the other 4 pins will be INPUTS and will be connected to the ROW wires. The OUTPUTS of the microcontroller will NOT all have power at the same time. The outputs will go high one by one in cycle. This happens many times per second, but i will slow things down...</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/howkeymatricesworks_1277639564.gif" type="image/gif" data-filename="howkeymatricesworks_1277639564.gif" border="0" height="326" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="344"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">So,this is -in VERY VERY slow motion-  how a typical microcontroller would cycle its outputs. During this time, it will also monitor the inputs for a signal. As long as all inputs are LOW (with a pull down resistor or with internal uC pull-down resistors), the uC will take no action. Now, suppose that the operator presses the button 3C. Look what happens:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/howkeymatricesworks_1277649177.gif" type="image/gif" data-filename="howkeymatricesworks_1277649177.gif" border="0" height="335" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="350"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">The microcontroller loops its outputs normally. The operator has pressed the C3 button. This button has connect the matrix col C, with the matrix row 3. When the output C of the microcontroller becomes HIGH, the signal arrives also at the input 3 of the microcontroller, through the pressed button. The uC monitors the 4 inputs and detects that when the specific output (C) is high, there is a HIGH signal at the input 3. So, this means that the input C3 is pressed! Easy it is not?</p>
+
+
+<br/><br/>
+  
+<br/><br/>
+
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">Pressing multiple buttons on a matrix</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">Pressing multiple buttons simultaneously on a matrix is not always a good idea. There are situations that the matrix operates normally, but not always. Suppose for example that someone pressed the buttons B1, B2 and B3 simultaneously. What will happen? Let's take a look:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/Image [5].png" type="image/png" data-filename="Image.png" border="0" height="326" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="344"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">When the output B becomes HIGH, then the three inputs 1,2 and 3 of the microcontroller will also become HIGH. Supposing that the firmware is written in a way that can handle such an event, the operation will be carried out normally. The uC will understand that the buttons B1, B2 and B3 are pressed. Let's see another situation where the buttons A3, B3 and C3 are pressed:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/howkeymatricesworks_1277650138.gif" type="image/gif" data-filename="howkeymatricesworks_1277650138.gif" border="0" height="326" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="344"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">In this situation, the matrix will also work normally. The microcontroller will detect a signal at input number 3, when the output A, B and C are HIGH. When the output D is HIGH, no signal is detected.</p>
+
+<br/><br/><br/>
+
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">The ghosting problem</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">I will continue the above examples with another situation, where the buttons C2, B2 and B3 are pressed simultaneously:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/Image [6].png" type="image/png" data-filename="Image.png" border="0" height="326" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="344"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">When the output C is HIGH, then the input 2 will also become HIGH. The uC will understand that the button C2 is pressed. But something else happens here. The button B2 is also pressed! This means that the HIGH signal will go through the button B2 to the column B. And due to the fact that the button B3 is pressed, the signal will arrive simultaneously at input #3 as well! But the microcontroller knows that at this moment, only the output C is HIGH, and because it detects HIGH signal at inputs 2 and 3, it will think that buttons C2 and C3 are pressed, something that is wrong! The button C3 is NOT actually pressed! This is known as <b>ghosting</b>, and usually gives a headache to PC gamers, especially when the game requires multiple buttons to be pressed simultaneously. Take for example the MAME console, which simulates arcade games. If you play samurai shodown 1v1, and one player has low defense and kicks while the other is flying high and uses the sword, this will require 6 keys to be pressed! Yawks! Ghosting occurs. (that's why i made my <a href="http://pcbheaven.com/circuitpages/MAME_Arcade-console_circuit" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank">MAME arcade console</a>)</p>
+
+
+<br/><br/><br/>
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">The masking problem</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+P]The masking problem comes in continue to the ghosting. When masking is occurred, the controller cannot detect a key change that has occur. Suppose for example that the ghosting problem has occur, by pressing C2, B2 and B3 simultaneously, like the previous example. The controller will think that the button C2 C3 is pressed, although the operator has not pressed C3. Now, the operator presses the button C3 without releasing any other button. Nothing changes at the microcontroller. And now the operator releases the button C2... What happens? Nothing! The microcontroller still thinks that C2 is pressed and cannot detect the button release! This is the masking problem, also a gamers headache.[/P]
+
+
+
+<br/>
+<table width="100%">
+<tbody><tr>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" width="33%"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277650492.png" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image [7].png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="127"/></a></td>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" width="33%"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277651662.png" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image [8].png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="127"/></a></td>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" width="33%"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277651668.png" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image [9].png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="127"/></a></td>
+</tr>
+<tr>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" valign="top"><b><font style="font-family:&quot;Times New Roman&quot;;font-size:16px;">By pressing buttons C2, B2 and B3 simultaneously, the ghosting problem occurs.</font></b></td>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" valign="top"><b><font style="font-family:&quot;Times New Roman&quot;;font-size:16px;">The operator presses button C3, yet nothing changes</font></b></td>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" valign="top"><b><font style="font-family:&quot;Times New Roman&quot;;font-size:16px;">Now the operator releases button C2. Still nothing changes and the uC cannot detect the button release! Masking has occur.</font></b></td>
+</tr>
+</tbody></table>
+<br/><br/>
+
+
+<br/><br/>
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">Any solution to the ghosting and masking?</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">Yes there is! And it is a cheap one. Using a diode for each button, the masking and ghosting problems are instantly solved! This is how it works:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/howkeymatricesworks_1277655319.gif" type="image/gif" data-filename="howkeymatricesworks_1277655319.gif" border="0" height="418" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="346"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">The above situation would normally cause ghosting. Yet, the diodes prevents the current to go backwards. For better understanding, you can see the 3 steps of the above animation here (as always, click to enlarge images):</p>
+
+<br/>
+<table width="100%">
+<tbody><tr>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" width="33%"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277655342.png" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image [10].png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="99"/></a></td>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" width="33%"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277655350.png" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image [11].png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="99"/></a></td>
+<td align="center" style="font-family:&quot;Times New Roman&quot;;font-size:16px;" width="33%"><a href="http://pcbheaven.com/scripts/imagepresent.php?filename=%2Fwikipages%2Fimages%2Fhowkeymatricesworks_1277655355.png" style="font-family:&quot;Times New Roman&quot;;font-size:16px;color:rgb(0, 0, 153);text-decoration:underline;" target="_blank"><img src="How a Key Matrix Work_files/Image [12].png" type="image/png" data-filename="Image.png" border="0" height="120" style="padding:4px;border-width:1px;border-style:solid;border-color:rgb(160, 160, 160);" title="Click to enlarge" width="99"/></a></td>
+</tr>
+</tbody></table>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">Because the cycling speed must be quite fast (some Khz), you should choose proper diodes. A cheap solution is the 1N4148 general purpose diodes. If you plan to have many keys and thus you need faster sampling, then select a schottkey diode instead.</p>
+
+<br/><br/><br/>
+
+<font style="color:black;letter-spacing:0px;break-before:page;text-decoration:none;font-family:verdana;font-size:18px;">And what about a matrix with outputs instead of inputs?</font><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">This is also a very interesting chapter with matrices. Using matrices, you can control for example 9 LEDs each one separately, with only 6 outputs. Look how it works:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/Image [13].png" type="image/png" data-filename="Image.png" border="0" height="335" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="282"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">Above there is a typical 3 x 3 LED matrix. All microcontroller pins, for both columns and rows are now OUTPUTS. Suppose now that all outputs are HIGH. All LEDs will have HIGH on both anode and cathode, and this means than none LED will light! This is how to turn completely off the LED matrix, by giving either HIGH or LOW to all outputs. Now suppose that we want to turn on the middle LED. To do this, we give HIGH to column 2 and rows 1 and 3, and LOW to column 1 and 3 and row 2. This is what will happen:</p>
+
+<br/><br/>
+<img src="How a Key Matrix Work_files/Image [14].png" type="image/png" data-filename="Image.png" border="0" height="346" style="border-color:rgb(160, 160, 160);border-style:solid;border-width:1px;padding:4px;" width="291"/>
+<br/><br/>
+
+<p style="font-family:&quot;Times New Roman&quot;;font-size:16px;text-align:justify;text-indent:50px;">The middle LED is forward biased and therefore it lights. All other LEDs are either reverse biased, or they have the same voltage (positive or negative) to their both leads, and therefore they do not light. This way, someone can control for example 64 LEDs each one separately, with an 8x8 matrix, using only 16 outputs from a microcontroller.</p>
+
+
+
+
+
+
+
+
+
+<br/><br/><hr style="height:1px;background-color:rgb(149, 149, 149);border-width:0px;"/><br/><br/>
+
+
+<br/><br/><br/><br/><br/><br/></td></tr></tbody></table></div></div></div>
+</div>
+</span>
+</div></body></html> 
