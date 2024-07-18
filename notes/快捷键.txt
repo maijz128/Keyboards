@@ -1,0 +1,24 @@
+
+
+复制    Ctrl + C
+粘贴    Ctrl + V = Shift + Insert
+剪切    Ctrl + X
+撤消    Ctrl + Z
+全选    Ctrl + A
+重复 （反撤销）   Ctrl + Y = Alt + Shift + Backspace
+Ctrl+f  查找
+Ctrl+g 定位
+Ctrl+h 替换
+Ctrl+w 关闭当前的窗口
+
+应用间切换
+Alt + Tab
+
+方向键+Shift
+将连续的文字或文件选中
+
+方向键（左右）+Ctrl
+在英文单词或中文词语间跳跃
+
+方向键（上下）+Ctrl
+在段落开头间跳跃
